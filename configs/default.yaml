@@ -1,0 +1,48 @@
+# D4RT Configuration
+
+model:
+  # Image and patch settings
+  img_size: 256
+  patch_size: 16
+  in_chans: 3
+
+  # Encoder architecture
+  embed_dim: 768
+  encoder_depth: 12
+  encoder_num_heads: 12
+
+  # Decoder architecture
+  decoder_depth: 6
+  decoder_num_heads: 8
+
+  # Query construction
+  num_spatial_frequencies: 10
+  max_frames: 100
+  patch_query_size: 9
+  use_image_patches: true
+
+  # Loss weights
+  weight_3d: 1.0
+  weight_reproj: 0.5
+  weight_normal: 0.3
+  weight_visibility: 0.2
+  weight_motion: 0.3
+  weight_confidence: 0.1
+
+  # Training hyperparameters
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  warmup_steps: 1000
+
+data:
+  # Video settings
+  num_frames: 16
+  image_size: 256
+  num_queries: 2048
+  edge_sampling_ratio: 0.2
+
+training:
+  batch_size: 2
+  num_workers: 4
+  max_epochs: 100
+  gpus: 1
